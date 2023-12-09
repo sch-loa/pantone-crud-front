@@ -13,17 +13,17 @@ export class FilterComponent {
 
   constructor(private router: Router, private route: ActivatedRoute){}
 
-  updateURL(param: string, value: string | number){
+  updateURL(param: string, value: string | number | boolean){
     const currentParams = { ...this.route.snapshot.queryParams }
 
-    currentParams[param] = value
-    console.log("ee", currentParams)
+    if(value){ currentParams[param] = value     
+    } else { delete currentParams[param] }
 
     this.router.navigate([], {
       relativeTo: this.route,
       queryParams: currentParams,
       replaceUrl: true,
-    })
+    }) 
   }
 }
 

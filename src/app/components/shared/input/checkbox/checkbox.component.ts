@@ -1,5 +1,4 @@
-import { Component, Input, AfterViewInit } from '@angular/core'
-import { Router, ActivatedRoute } from '@angular/router'
+import { Component, Input, Output, EventEmitter, AfterViewInit } from '@angular/core'
 
 @Component({
   selector: 'app-checkbox',
@@ -10,29 +9,9 @@ export class CheckboxComponent implements AfterViewInit{
   @Input() paramName!: string
   @Input() state!: boolean
   @Input() timeOut!: number
+  @Output() changedEvent = new EventEmitter<boolean>()
 
-  constructor(private router: Router, private route: ActivatedRoute){}
+  ngAfterViewInit() { setTimeout(() => this.emitChangedEvent()) }
 
-  ngAfterViewInit(){
-    setTimeout(() => {
-      this.updateURL()
-    }, 0/this.timeOut)
-  }
-
-  updateURL(){
-    const currentParams = { ...this.route.snapshot.queryParams }
-    if(this.state){
-      currentParams[this.paramName] = this.state
-    }
-    else{
-      delete currentParams[this.paramName]
-    }
-
-    this.router.navigate([], {
-      relativeTo: this.route,
-      queryParams: currentParams,
-      replaceUrl: true,
-    })
-
-  }
+  emitChangedEvent(){ this.changedEvent.emit(this.state); console.log("changes changes") }
 }

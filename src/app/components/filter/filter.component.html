@@ -14,7 +14,7 @@
         <h2 class="filter-title">Texture</h2>
         <div class="filter_texture">
             <div *ngFor="let option of textureOptions; let i = index" class="filter__item">
-                <app-checkbox [paramName]="names[i]" [state]="true" [timeOut]="i+1"></app-checkbox>
+                <app-checkbox [state]="true" (changedEvent)="updateURL(names[i], $event)"></app-checkbox>
                 <label class="filter__label" for="">{{option}}</label>
             </div>
         </div>

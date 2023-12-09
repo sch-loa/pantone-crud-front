@@ -14,7 +14,8 @@ export class SearchBarComponent {
   updateURL(){
     const currentParams = { ...this.route.snapshot.queryParams }
 
-    currentParams['search'] = this.search
+    if(this.search){ currentParams['search'] = this.search
+    } else { delete currentParams['search'] }
 
     this.router.navigate([], {
       relativeTo: this.route,
