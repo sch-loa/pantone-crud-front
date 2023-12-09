@@ -7,6 +7,10 @@
 .search-bar{
     background-color: var(--primary-color);
     height: 6rem;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 2;
 }
 
 .search-bar__content{

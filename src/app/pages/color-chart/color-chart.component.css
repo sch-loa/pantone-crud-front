@@ -1,5 +1,5 @@
 .color-cards{
-    margin: 1.5rem 2rem;
+    margin: 8rem 2rem;
     display: flex;
     justify-content: space-between;
 }
@@ -29,7 +29,7 @@
     margin: 1rem 0;
 }
 
-@media only screen and (max-width : 768px) {
+@media only screen and (max-width : 837px) {
     .color-cards{ flex-direction: column; align-items: center;}
     .filter-wrapper{ order: 0; }
 
