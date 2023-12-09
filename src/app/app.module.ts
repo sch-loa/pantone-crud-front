@@ -9,6 +9,7 @@ import { ColorChartComponent } from './pages/color-chart/color-chart.component'
 import { SearchBarComponent } from './components/search-bar/search-bar.component'
 import { FilterComponent } from './components/filter/filter.component'
 import { CheckboxComponent } from './components/shared/input/checkbox/checkbox.component'
+import { FooterComponent } from './components/footer/footer.component'
 
 export const DECLARATIONS = [
   AppComponent,
@@ -16,7 +17,8 @@ export const DECLARATIONS = [
   ColorChartComponent,
   SearchBarComponent,
   FilterComponent,
-  CheckboxComponent
+  CheckboxComponent, 
+  FooterComponent
 ]
 
 export const IMPORTS = [
