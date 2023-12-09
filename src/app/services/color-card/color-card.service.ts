@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core'
 import { ColorCard, ColorCardJSON } from 'src/domain/ColorCard'
-import { HttpClient } from '@angular/common/http'
+import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { REST_SERVER_URL } from '../config'
 import { lastValueFrom } from 'rxjs'
 
@@ -47,7 +47,19 @@ export class ColorCardService {
     return (await lastValueFrom(cards$)).map((cardJSON: ColorCardJSON) => ColorCard.fromJSON(cardJSON))
   }
 
-  async delete(card: ColorCard){
+  create(card: string){
+    this.httpClient.post<ColorCardJSON[]>(`${REST_SERVER_URL}/colorCards/create`, card, {
+      headers: new HttpHeaders({'Content-Type' : 'application/json'})
+    })
+  }
+
+  update(card: string){
+    this.httpClient.put<ColorCardJSON[]>(`${REST_SERVER_URL}/colorCards/create`, card, {
+      headers: new HttpHeaders({'Content-Type' : 'application/json'})
+    })
+  }
+
+  delete(card: ColorCard){
     this.httpClient.delete<ColorCardJSON[]>(`${REST_SERVER_URL}/colorCards/remove?${card}`)
   }
 }

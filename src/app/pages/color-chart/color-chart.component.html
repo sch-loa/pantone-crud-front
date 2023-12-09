@@ -3,12 +3,28 @@
     <app-filter class="filter-wrapper"></app-filter>
     <section class="cards-wrapper">
         <section class="color-cards__cards-container">
-            <app-color-card (deleteEvent)="deleteColorCard($event)" class="color-card-wrapper" *ngFor="let colorCard of colorCards" [colorCard]="colorCard"></app-color-card>
+            <app-color-card (deleteEvent)="deleteColorCard($event)" (editEvent)="showModalCardForm($event)" class="color-card-wrapper" *ngFor="let colorCard of colorCards" [colorCard]="colorCard"></app-color-card>
         </section>
     </section>
-    <button class="button-add">
+    <button (click)="showModalCardForm()" class="button-add">
         <i class="fa-solid fa-plus"></i>
     </button>
 </main>
+
+<div *ngIf="modalCardFormEnabled" class="modal-form__wrapper">
+    <form class="modal-form" action="">
+        <h4 [style.backgroundColor]="hexaColorPreview" class="modal-form__color-preview">[ Color Preview ]</h4>
+        <input [value]="modalFormColorCard? modalFormColorCard.hexaColor : ''" name="hexaColor" [(ngModel)]="hexaColorPreview" class="modal-form__field" type="text" placeholder="Hexa Code">
+        <input [value]="modalFormColorCard? modalFormColorCard.code : ''" min="0" class="modal-form__field" type="number" placeholder="Color Code">
+        <select [value]="modalFormColorCard? modalFormColorCard.type : ''" class="modal-form__field" name="" id="">
+            <option value="" hidden selected>Choose Texture</option>
+            <option value="U">Uncoated</option>
+            <option value="C">Coated</option>
+        </select>
+        <input class="modal-form__button submit-button" type="submit" value="Create">
+        <input (click)="resetModalFormValues()" class="modal-form__button cancel-button" type="button" value="Cancel">
+    </form> 
+</div>
+
 
 
