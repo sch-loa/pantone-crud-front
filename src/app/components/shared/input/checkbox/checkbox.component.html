@@ -1,4 +1,4 @@
 <span class="checkbox">
-    <input class="checkbox__input" type="checkbox" checked>
+    <input [(ngModel)]="state" (ngModelChange)="updateURL()" class="checkbox__input" type="checkbox">
     <span class="checkbox__checkmark"></span>
 </span>
