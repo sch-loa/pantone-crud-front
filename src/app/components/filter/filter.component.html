@@ -1,0 +1,23 @@
+<section class="filter">
+    <form class="filter__form" action="">
+        <h2 class="filter-title">Color Range</h2>
+        <div class="filter__range">
+            <div class="filter_item">
+                <label class="filter__label" for="">From</label>
+                <input name="minValue" [(ngModel)]="range.min" data-testid="minValue" min="0" class="filter__input" type="number" placeholder="">
+            </div>
+            <div class="filter_item">
+                <label class="filter__label" for="">To</label>
+                <input name="maxValue" [(ngModel)]="range.max" data-testid="maxValue" min="0" class="filter__input" type="number" placeholder="">
+            </div>
+        </div>
+        <h2 class="filter-title">Texture</h2>
+        <div class="filter_texture">
+            <div *ngFor="let option of textureOptions" class="filter__item">
+                <app-checkbox></app-checkbox>
+                <label class="filter__label" for="">{{option}}</label>
+            </div>
+        </div>
+        
+    </form>
+</section>

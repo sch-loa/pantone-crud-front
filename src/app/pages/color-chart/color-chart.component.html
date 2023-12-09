@@ -1,0 +1,11 @@
+<app-search-bar></app-search-bar>
+<main class="color-cards">
+    <app-filter class="filter-wrapper"></app-filter>
+    <section class="cards-wrapper">
+        <section class="color-cards__cards-container">
+            <app-color-card class="color-card-wrapper" *ngFor="let colorCard of colorCards" [colorCard]="colorCard"></app-color-card>
+        </section>
+    </section>
+</main>
+
+
