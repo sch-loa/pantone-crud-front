@@ -50,7 +50,7 @@ export class ColorChartComponent implements OnChanges {
     if(card){
       console.log("edit")
       this.modalFormColorCard = card
-      this.hexaColorPreview = this.modalFormColorCard.hexaColor
+      this.hexaColorPreview =  '#' + card.hexaColor
     }
     else{
       console.log("create")

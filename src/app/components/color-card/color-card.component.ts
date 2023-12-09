@@ -13,8 +13,8 @@ export class ColorCardComponent {
   @Output() deleteEvent = new EventEmitter<ColorCard>()
   @Output() editEvent = new EventEmitter<ColorCard>()
 
-  emitDeleteColorCard(){ this.deleteEvent.emit(this.colorCard) }
-  emitEditColorCard(){ this.editEvent.emit(this.colorCard) }
+  emitDeleteColorCard(){ this.deleteEvent.emit(this.colorCard); this.changeEnabled(false) }
+  emitEditColorCard(){ this.editEvent.emit(this.colorCard); this.changeEnabled(false) }
 
   changeEnabled(value: boolean){ this.enabled = value }
 

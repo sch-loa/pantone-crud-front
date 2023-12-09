@@ -13,8 +13,11 @@
 
 <div *ngIf="modalCardFormEnabled" class="modal-form__wrapper">
     <form class="modal-form" action="">
-        <h4 [style.backgroundColor]="hexaColorPreview" class="modal-form__color-preview">[ Color Preview ]</h4>
-        <input [value]="modalFormColorCard? modalFormColorCard.hexaColor : ''" name="hexaColor" [(ngModel)]="hexaColorPreview" class="modal-form__field" type="text" placeholder="Hexa Code">
+        <h4 *ngIf="modalFormColorCard? modalFormColorCard.type == 'C' : false; else elseBlock" [ngStyle]="{'background-image': 'linear-gradient(45deg, ' + hexaColorPreview + ' 30%, rgba(255, 255, 255))'}" class="modal-form__color-preview">[ Color Preview ]</h4>
+        <ng-template #elseBlock>
+            <h4 [style.backgroundColor]="hexaColorPreview" class="modal-form__color-preview">[ Color Preview ]</h4>
+        </ng-template>
+        <input name="hexaColor" [(ngModel)]="hexaColorPreview" class="modal-form__field" type="text" placeholder="Hexa Code">
         <input [value]="modalFormColorCard? modalFormColorCard.code : ''" min="0" class="modal-form__field" type="number" placeholder="Color Code">
         <select [value]="modalFormColorCard? modalFormColorCard.type : ''" class="modal-form__field" name="" id="">
             <option value="" hidden selected>Choose Texture</option>
