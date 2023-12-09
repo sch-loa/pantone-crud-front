@@ -1,0 +1,27 @@
+.color-card{
+    background-color: var(--primary-color);
+    width: fit-content;
+    height: fit-content;
+    padding: 0.4rem;
+    box-shadow: var(--primary-shadow);
+    cursor: pointer;
+}
+
+.color-card__color-box{
+    height: 15rem;
+    aspect-ratio: 1/1;
+}
+
+.color-card__info{ padding: 1rem 0 1.5rem 1rem; }
+
+.color-card__item{
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.color-title{
+    font-weight: 900;
+    font-size: 1.4rem;
+}
+
+.color-type{ margin-left: 0.5rem; }

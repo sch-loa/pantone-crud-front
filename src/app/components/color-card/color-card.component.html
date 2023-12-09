@@ -1,0 +1,11 @@
+<article class="color-card">
+    <div *ngIf="colorCard.type == 'U'" class="color-card__color-box" [ngStyle]="{'background-color': '#' + colorCard.hexaColor}">
+    </div>
+    <div *ngIf="colorCard.type == 'C'" class="color-card__color-box" [ngStyle]="{'background-image': 'linear-gradient(45deg, #' + colorCard.hexaColor + ' 30%, rgba(255, 255, 255))'}">
+    </div>
+    <section class="color-card__info">
+        <h3 class="color-card__item color-title">PANTONE ©</h3>
+        <span data-testid="colorCode" class="color-card__item color-code">{{colorCard.code}}</span>
+        <span data-testid="colorType" class="color-card__item color-type">{{colorCard.type}}</span>
+    </section>
+</article>
