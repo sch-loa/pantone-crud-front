@@ -4,7 +4,6 @@
     height: fit-content;
     padding: 0.4rem;
     box-shadow: var(--primary-shadow);
-    cursor: pointer;
 }
 
 .color-card__color-box{
@@ -12,7 +11,7 @@
     aspect-ratio: 1/1;
 }
 
-.color-card__info{ padding: 1rem 0 1.5rem 1rem; }
+.color-card__info{ padding: 1rem 0 1.5rem 1rem; position: relative; }
 
 .color-card__item{
     font-size: 1.2rem;
@@ -25,3 +24,49 @@
 }
 
 .color-type{ margin-left: 0.5rem; }
+
+.color-card__options{
+    cursor: pointer;
+    text-align: end;
+    background-color: var(--primary-color);
+    position: absolute;
+    top: 0.5rem;
+    right: 0;
+}
+
+.color-card__options i{
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding-right: 0.5rem;
+    opacity: 0.7;
+}
+
+.popup-options{
+    width: fit-content;
+    position: absolute;
+    top: 2rem;
+    right: -1rem;
+    border: 0.1rem solid var(--shadow-color);
+    padding: 0.4rem;
+    z-index: 999;
+}
+
+.popup-options, .popup-options * {
+    background-color: var(--primary-color);
+    cursor: pointer;
+}
+
+.popup-options *{ pointer-events: none;}
+
+.popup-options__remove{
+    background-color: var(--primary-color);
+    margin-right: 1rem;
+}
+
+.popup-options.enabled{
+    display: block;
+}
+
+.popup-options.disabled{
+    display: none;
+}
