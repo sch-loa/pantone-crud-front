@@ -56,8 +56,6 @@
     cursor: pointer;
 }
 
-.popup-options *{ pointer-events: none;}
-
 .popup-options__remove{
     background-color: var(--primary-color);
     margin-right: 1rem;

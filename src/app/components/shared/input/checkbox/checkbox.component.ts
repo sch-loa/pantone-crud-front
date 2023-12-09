@@ -21,10 +21,8 @@ export class CheckboxComponent implements AfterViewInit{
 
   updateURL(){
     const currentParams = { ...this.route.snapshot.queryParams }
-    console.log("aaaaaaaaaa", currentParams)
     if(this.state){
       currentParams[this.paramName] = this.state
-      console.log("ee",this.paramName,  currentParams)
     }
     else{
       delete currentParams[this.paramName]

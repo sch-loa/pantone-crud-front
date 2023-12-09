@@ -6,8 +6,8 @@
     <section class="color-card__info">
         <button (blur)="handleBlur($event)" (click)="changeEnabled(!enabled)" class="color-card__options"><i class="fa-solid fa-ellipsis"></i></button>
             <div tabindex="0" (blur)="changeEnabled(false)" id="color-card__options" class="popup-options {{enabled? 'enabled' : 'disabled'}}">
-                <button id="color-card__remove" class="popup-options__remove"><i class="fa-solid fa-trash"></i></button>
-                <button id="color-card__edit" class="popup-options__edit"><i class="fa-solid fa-pen"></i></button>
+                <button tabindex="0" (blur)="changeEnabled(false)" (click)="emitDeleteColorCard()" id="color-card__remove" class="popup-options__remove"><i class="fa-solid fa-trash"></i></button>
+                <button tabindex="0" (blur)="changeEnabled(false)" (click)="emitEditColorCard()" id="color-card__edit" class="popup-options__edit"><i class="fa-solid fa-pen"></i></button>
             </div>
         <h3 class="color-card__item color-title">PANTONE ©</h3>
         <span data-testid="colorCode" class="color-card__item color-code">{{colorCard.code}}</span>

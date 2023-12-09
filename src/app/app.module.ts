@@ -10,6 +10,7 @@ import { SearchBarComponent } from './components/search-bar/search-bar.component
 import { FilterComponent } from './components/filter/filter.component'
 import { CheckboxComponent } from './components/shared/input/checkbox/checkbox.component'
 import { FooterComponent } from './components/footer/footer.component'
+import { HttpClientModule } from '@angular/common/http'
 
 export const DECLARATIONS = [
   AppComponent,
@@ -24,7 +25,8 @@ export const DECLARATIONS = [
 export const IMPORTS = [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ]
 
 @NgModule({
