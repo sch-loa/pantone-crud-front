@@ -13,16 +13,16 @@
 
 <div *ngIf="modalCardFormEnabled" class="modal-form__wrapper">
     <form class="modal-form" action="">
-        <h4 *ngIf="modalFormColorCard? modalFormColorCard.type == 'C' : false; else elseBlock" [ngStyle]="{'background-image': 'linear-gradient(45deg, ' + hexaColorPreview + ' 30%, rgba(255, 255, 255))'}" class="modal-form__color-preview">[ Color Preview ]</h4>
+        <h4 *ngIf="modalFormValues.texture == 'C'; else elseBlock" [ngStyle]="{'background-image': 'linear-gradient(45deg, ' + modalFormValues.preview + ' 30%, rgba(255, 255, 255))'}" class="modal-form__color-preview">[ Color Preview ]</h4>
         <ng-template #elseBlock>
-            <h4 [style.backgroundColor]="hexaColorPreview" class="modal-form__color-preview">[ Color Preview ]</h4>
+            <h4 [style.backgroundColor]="modalFormValues.preview" class="modal-form__color-preview">[ Color Preview ]</h4>
         </ng-template>
-        <input name="hexaColor" [(ngModel)]="hexaColorPreview" class="modal-form__field" type="text" placeholder="Hexa Code">
+        <input name="hexaColor" [(ngModel)]="modalFormValues.preview" class="modal-form__field" type="text" placeholder="Hexa Code">
         <input [value]="modalFormColorCard? modalFormColorCard.code : ''" min="0" class="modal-form__field" type="number" placeholder="Color Code">
-        <select [value]="modalFormColorCard? modalFormColorCard.type : ''" class="modal-form__field" name="" id="">
-            <option value="" hidden selected>Choose Texture</option>
-            <option value="U">Uncoated</option>
-            <option value="C">Coated</option>
+        <select name="colorTexture" [(ngModel)]="modalFormValues.texture" class="modal-form__field" id="">
+            <option name="empty" value="" hidden selected>Choose Texture</option>
+            <option name="U" value="U">Uncoated</option>
+            <option name="C" value="C">Coated</option>
         </select>
         <input class="modal-form__button submit-button" type="submit" value="Create">
         <input (click)="resetModalFormValues()" class="modal-form__button cancel-button" type="button" value="Cancel">

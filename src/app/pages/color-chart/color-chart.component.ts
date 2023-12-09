@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnChanges, SimpleChanges } from '@angular/core'
+import { Component } from '@angular/core'
 import { Router, NavigationEnd, ActivatedRoute } from '@angular/router'
 import { ColorCard } from 'src/domain/ColorCard'
 import { ColorCardService } from 'src/app/services/color-card/color-card.service'
@@ -9,25 +9,18 @@ import { ColorCardService } from 'src/app/services/color-card/color-card.service
   templateUrl: './color-chart.component.html',
   styleUrls: ['./color-chart.component.css']
 })
-export class ColorChartComponent implements OnChanges {
+export class ColorChartComponent {
   colorCards!: ColorCard[]
   modalCardFormEnabled = true
 
   modalFormColorCard!: ColorCard | null
-  hexaColorPreview = ''
+  modalFormValues = {preview: '', texture: ''}
 
   constructor(
     public service: ColorCardService,
     private router: Router,
-    private route: ActivatedRoute,
-    private cdr: ChangeDetectorRef
+    private route: ActivatedRoute
   ){}
-
-  ngOnChanges(changes: SimpleChanges): void {
-    if(changes['hexaColorPreview']){
-      this.cdr.detectChanges()
-    }
-  }
 
   ngOnInit(): void {
     this.router.events.subscribe(event => {
@@ -50,7 +43,8 @@ export class ColorChartComponent implements OnChanges {
     if(card){
       console.log("edit")
       this.modalFormColorCard = card
-      this.hexaColorPreview =  '#' + card.hexaColor
+      this.modalFormValues.preview =  '#' + card.hexaColor
+      this.modalFormValues.texture = card.type
     }
     else{
       console.log("create")
@@ -60,6 +54,7 @@ export class ColorChartComponent implements OnChanges {
   resetModalFormValues(){
     this.modalCardFormEnabled = false
     this.modalFormColorCard = null
-    this.hexaColorPreview = ''
+    this.modalFormValues.preview = ''
+    this.modalFormValues.texture = ''
   }
 }
