@@ -2,6 +2,7 @@
     margin: 8rem 2rem;
     display: flex;
     justify-content: space-between;
+    position: relative;
 }
 
 .cards-wrapper{
@@ -28,6 +29,22 @@
     align-self: center;
     margin: 1rem 0;
 }
+
+.button-add{
+    cursor: pointer;
+    position: fixed;
+    width: fit-content;
+    height: fit-content;
+    padding: 2rem;
+    border-radius: 100%;
+    background-color: var(--quaternary-color);
+    color: var(--primary-color);
+    bottom: 1rem;
+    right: 1rem;
+    box-shadow: 0 0 0.2rem 0.1rem  var(--secondary-color);
+}
+
+.button-add i{ font-size: 2rem; }
 
 @media only screen and (max-width : 837px) {
     .color-cards{ flex-direction: column; align-items: center;}

@@ -2,7 +2,7 @@
     height: fit-content;
     padding: 1.5rem 0;
     width: 100%;
-    background-color: #1D1C1A;
+    background-color: var(--quaternary-color);
     color: #44413c;
 }
 
@@ -26,8 +26,8 @@
 .footer_content{
     width: fit-content;
     padding: 0.5rem;
-    border: 0.1rem solid #363430;
-    outline: 0.1rem solid #363430;
+    border: 0.1rem solid var(--tertiary-color);
+    outline: 0.1rem solid var(--tertiary-color);
     outline-offset: 0.2rem;
     border-radius: 0.5rem;
 }

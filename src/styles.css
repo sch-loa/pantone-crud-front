@@ -3,8 +3,8 @@
 :root{
     --primary-color: #FFFF;
     --secondary-color: #e4e4e4;
-    --tertiary-color: #5C5470;
-    --quaternary-color: #352F44;
+    --tertiary-color: #363430;
+    --quaternary-color: #1D1C1A;
     --shadow-color: #cbcbcb;
     --font-family: 'Roboto', sans-serif;
     --primary-shadow: 0.8rem 0.8rem var(--shadow-color);
