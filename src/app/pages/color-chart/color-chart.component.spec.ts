@@ -41,10 +41,4 @@ describe('ColorChartComponent', () => {
     const compiled = fixture.debugElement.nativeElement
     return compiled.querySelector(`[data-testid="${testId}"]`)
   }
-
-  function writeInput(element: HTMLInputElement, value: string) {
-    element.value = value
-    element.dispatchEvent(new Event('input'))
-    fixture.detectChanges()
-  }
 })
