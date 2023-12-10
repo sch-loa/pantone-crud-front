@@ -18,4 +18,18 @@ describe('FooterComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy()
   })
+
+  it('should change the year value', () => {
+    const newYear = 2057
+    const header = searchElement('footer__header')
+    component.year = newYear
+    fixture.detectChanges()
+    
+    expect(header.textContent).toContain('Pantone Color Chart ' + newYear)
+  })
+
+  function searchElement(testId: string) {
+    const compiled = fixture.debugElement.nativeElement
+    return compiled.querySelector(`[data-testid="${testId}"]`)
+  }
 })
