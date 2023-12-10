@@ -6,6 +6,7 @@ import { Component, Input, Output, EventEmitter, AfterViewInit } from '@angular/
   styleUrls: ['./checkbox.component.css']
 })
 export class CheckboxComponent implements AfterViewInit{
+  @Input() dataTestId!: string
   @Input() state!: boolean
   @Output() changedEvent = new EventEmitter<boolean>()
 

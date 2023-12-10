@@ -1,4 +1,4 @@
 <span class="checkbox">
-    <input data-testid="checkbox" [(ngModel)]="state" (ngModelChange)="emitChangedEvent()" class="checkbox__input" type="checkbox">
+    <input [attr.data-testid]="dataTestId" [(ngModel)]="state" (ngModelChange)="emitChangedEvent()" class="checkbox__input" type="checkbox">
     <span class="checkbox__checkmark"></span>
 </span>

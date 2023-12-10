@@ -14,6 +14,7 @@ describe('CheckboxComponent', () => {
 
     fixture = TestBed.createComponent(CheckboxComponentStub)
     component = fixture.componentInstance
+    component.dataTestId = "checkbox"
     fixture.detectChanges()
   })
 

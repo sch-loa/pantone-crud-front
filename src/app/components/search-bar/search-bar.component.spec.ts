@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing'
+import { ComponentFixture, TestBed } from '@angular/core/testing'
 import { ActivatedRoute } from '@angular/router'
 import { RouterTestingModule } from '@angular/router/testing'
 import { DECLARATIONS, IMPORTS } from 'src/app/app.module'
@@ -35,16 +35,18 @@ describe('SearchBarComponent', () => {
     expect(component.search).toBe(searchContent)
   })
 
-  it('should update the url', fakeAsync(() => {
+  it('should update the url', () => {
     const searchInput: HTMLInputElement = searchElement('searchInput')
     const searchButton = searchElement('searchButton')
 
     writeInput(searchInput, searchContent)
     searchButton.click()
-    tick(1000)
     fixture.detectChanges()
-    expect(activatedRoute.snapshot.queryParams['search']).toEqual(searchContent)
-  }))
+    
+    fixture.whenStable().then(() => {
+      expect(activatedRoute.snapshot.queryParams['search']).toEqual(searchContent)
+    })
+  })
 
   function searchElement(testId: string) {
     const compiled = fixture.debugElement.nativeElement
