@@ -1,6 +1,6 @@
 <section class="search-bar">
     <form (ngSubmit)="updateURL()" class="search-bar__content" action="">
-        <input [(ngModel)]="search" name="searchInput"  class="search-bar__input" type="text" placeholder="Search by Code, Type...">
-        <button type="submit" class="search-bar__button"><i class="fa-solid fa-magnifying-glass"></i></button>
+        <input data-testid="searchInput" [(ngModel)]="search" name="searchInput"  class="search-bar__input" type="text" placeholder="Search by Code, Type...">
+        <button data-testid="searchButton" type="submit" class="search-bar__button"><i class="fa-solid fa-magnifying-glass"></i></button>
     </form>
 </section>
