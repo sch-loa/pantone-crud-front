@@ -27,7 +27,7 @@
         <span class="warning" *ngIf="texture.invalid && (texture.dirty && texture.touched)"><span>Texture must not be empty. Select an option</span></span>
         <input #colorCode="ngModel" required [ngModel]="defaultCard?.code" id="colorCode" name="colorCode" min="0" class="modal-form__field {{colorCode.invalid && (colorCode.dirty && colorCode.touched)? 'modal-form__field--invalid' : ''}}" type="number" placeholder="Color code">
         <span class="warning" *ngIf="colorCode.invalid && (colorCode.dirty && colorCode.touched)"><span>Color code must be a number</span></span>
-        <input class="modal-form__button submit-button" type="submit" value="Create">
+        <input class="modal-form__button submit-button" type="submit" [value]="defaultCard? 'Update' : 'Create'">
         <input (click)="resetModalFormValues()" class="modal-form__button cancel-button" type="button" value="Cancel">
     </form> 
 </div>
