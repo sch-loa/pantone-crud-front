@@ -6,12 +6,12 @@
             <app-color-card (deleteEvent)="deleteColorCard($event)" (editEvent)="showModalCardForm($event)" class="color-card-wrapper" *ngFor="let colorCard of colorCards" [colorCard]="colorCard"></app-color-card>
         </section>
     </section>
-    <button (click)="showModalCardForm()" class="button-add">
+    <button data-testid="add-button" (click)="showModalCardForm()" class="button-add">
         <i class="fa-solid fa-plus"></i>
     </button>
 </main>
 
-<div *ngIf="modalCardFormEnabled" class="modal-form__wrapper">
+<div data-testid="modalForm" *ngIf="modalCardFormEnabled" class="modal-form__wrapper">
     <form (ngSubmit)="handleModalFormSubmit(modalForm)" #modalForm="ngForm" class="modal-form" action="">
         <h4 *ngIf="modalFormValues.texture == 'C'; else elseBlock" [ngStyle]="{'background-image': 'linear-gradient(45deg, ' + modalFormValues.preview + ' 30%, rgba(255, 255, 255))'}" class="modal-form__color-preview">[ Color Preview ]</h4>
         <ng-template #elseBlock>
