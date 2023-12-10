@@ -13,7 +13,7 @@ describe('ColorCardComponent', () => {
     })
     fixture = TestBed.createComponent(ColorCardComponent)
     component = fixture.componentInstance
-    component.colorCard = new ColorCard(161, 'U', 'c6913d')
+    component.colorCard = new ColorCard(1, 161, 'U', 'c6913d')
     fixture.detectChanges()
   })
 

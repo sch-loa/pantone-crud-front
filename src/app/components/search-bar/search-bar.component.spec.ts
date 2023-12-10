@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing'
 
+import { DECLARATIONS, IMPORTS } from 'src/app/app.module'
 import { SearchBarComponent } from './search-bar.component'
 
 describe('SearchBarComponent', () => {
@@ -8,7 +9,8 @@ describe('SearchBarComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [SearchBarComponent]
+      declarations: [SearchBarComponent, DECLARATIONS],
+      imports: IMPORTS
     })
     fixture = TestBed.createComponent(SearchBarComponent)
     component = fixture.componentInstance
