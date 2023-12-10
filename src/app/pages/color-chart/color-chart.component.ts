@@ -1,8 +1,8 @@
-import { Component } from '@angular/core'
+import { Component, ViewChild } from '@angular/core'
 import { Router, NavigationEnd, ActivatedRoute } from '@angular/router'
 import { ColorCard } from 'src/domain/ColorCard'
 import { ColorCardService } from 'src/app/services/color-card/color-card.service'
-
+import { NgForm } from '@angular/forms'
 
 @Component({
   selector: 'app-color-chart',
@@ -11,9 +11,10 @@ import { ColorCardService } from 'src/app/services/color-card/color-card.service
 })
 export class ColorChartComponent {
   colorCards!: ColorCard[]
-  modalCardFormEnabled = false
 
-  modalFormColorCard!: ColorCard | null
+  modalCardFormEnabled = false
+  @ViewChild('modalForm') modalForm!: NgForm
+  defaultCard!: ColorCard | null
   modalFormValues = {preview: '', texture: ''}
 
   constructor(
@@ -39,18 +40,28 @@ export class ColorChartComponent {
 
   showModalCardForm(card: ColorCard | void){
     this.modalCardFormEnabled = true
-
     if(card){
-      this.modalFormColorCard = card
-      this.modalFormValues.preview =  '#' + card.hexaColor
+      this.defaultCard = card
+      this.modalFormValues.preview = '#' + card.hexaColor
       this.modalFormValues.texture = card.type
     }
   }
 
   resetModalFormValues(){
     this.modalCardFormEnabled = false
-    this.modalFormColorCard = null
+    this.defaultCard = null
     this.modalFormValues.preview = ''
     this.modalFormValues.texture = ''
+    this.modalForm.reset()
+  }
+
+  handleModalFormSubmit(form: NgForm){
+    const card = new ColorCard(
+      this.defaultCard? this.defaultCard.id : 0,
+      form.value.colorCode,
+      form.value.colorTexture,
+      form.value.hexaColor
+      )
+    console.log('aaaaaa', card)
   }
 }
