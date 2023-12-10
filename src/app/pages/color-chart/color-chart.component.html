@@ -17,13 +17,16 @@
         <ng-template #elseBlock>
             <h4 [style.backgroundColor]="modalFormValues.preview" class="modal-form__color-preview">[ Color Preview ]</h4>
         </ng-template>
-        <input [(ngModel)]="modalFormValues.preview" name="hexaColor" class="modal-form__field" type="text" placeholder="Color value">
-        <select [(ngModel)]="modalFormValues.texture" name="colorTexture" class="modal-form__field" id="">
+        <input #hexaColor="ngModel" required [(ngModel)]="modalFormValues.preview" id="hexaColor" name="hexaColor" class="modal-form__field {{hexaColor.invalid && (hexaColor.dirty && hexaColor.touched)? 'modal-form__field--invalid' : ''}}" type="text" placeholder="Color value">
+        <span class="warning" *ngIf="hexaColor.invalid && (hexaColor.dirty && hexaColor.touched)"><span>Color value must be an hexa value (i.e.: #FFF)</span></span>
+        <select #texture="ngModel" required [(ngModel)]="modalFormValues.texture" id="colorTexture" name="colorTexture" class="modal-form__field {{texture.invalid && (texture.dirty && texture.touched)? 'modal-form__field--invalid' : ''}}">
             <option name="" value="" hidden selected>Choose texture</option>
             <option name="U" value="U">Uncoated</option>
             <option name="C" value="C">Coated</option>
         </select>
-        <input ngModel name="colorCode" min="0" class="modal-form__field" type="number" placeholder="Color code">
+        <span class="warning" *ngIf="texture.invalid && (texture.dirty && texture.touched)"><span>Texture must not be empty. Select an option</span></span>
+        <input #colorCode="ngModel" required [ngModel]="defaultCard?.code" id="colorCode" name="colorCode" min="0" class="modal-form__field {{colorCode.invalid && (colorCode.dirty && colorCode.touched)? 'modal-form__field--invalid' : ''}}" type="number" placeholder="Color code">
+        <span class="warning" *ngIf="colorCode.invalid && (colorCode.dirty && colorCode.touched)"><span>Color code must be a number</span></span>
         <input class="modal-form__button submit-button" type="submit" value="Create">
         <input (click)="resetModalFormValues()" class="modal-form__button cancel-button" type="button" value="Cancel">
     </form> 

@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core'
+import { Component } from '@angular/core'
 import { Router, NavigationEnd, ActivatedRoute } from '@angular/router'
 import { ColorCard } from 'src/domain/ColorCard'
 import { ColorCardService } from 'src/app/services/color-card/color-card.service'
@@ -13,7 +13,6 @@ export class ColorChartComponent {
   colorCards!: ColorCard[]
 
   modalCardFormEnabled = false
-  @ViewChild('modalForm') modalForm!: NgForm
   defaultCard!: ColorCard | null
   modalFormValues = {preview: '', texture: ''}
 
@@ -52,16 +51,25 @@ export class ColorChartComponent {
     this.defaultCard = null
     this.modalFormValues.preview = ''
     this.modalFormValues.texture = ''
-    this.modalForm.reset()
   }
 
   handleModalFormSubmit(form: NgForm){
-    const card = new ColorCard(
-      this.defaultCard? this.defaultCard.id : 0,
-      form.value.colorCode,
-      form.value.colorTexture,
-      form.value.hexaColor
-      )
-    console.log('aaaaaa', card)
+
+    if(!form.valid || form.pristine){
+      Object.keys(form.controls).forEach(controlName => {
+        form.controls[controlName].markAsDirty()
+        form.controls[controlName].markAllAsTouched()
+      })
+    }
+    else{
+      const card = new ColorCard(
+        this.defaultCard? this.defaultCard.id : 0,
+        form.value.colorCode,
+        form.value.colorTexture,
+        form.value.hexaColor
+        )
+      console.log('aaaaaa', JSON.stringify(card))
+      this.resetModalFormValues()
+    }
   }
 }

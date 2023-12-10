@@ -72,7 +72,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1rem;
     width: fit-content;
     height: fit-content;
     background-color: var(--primary-color);
@@ -95,6 +94,7 @@
 .submit-button:focus, .submit-button:hover{ background-color: var(--tertiary-color); }
 
 .cancel-button{
+    margin-top: 0.5rem;
     font-size: 1.2rem;
     background-color: var(--primary-color);
     color: darkred;
@@ -117,4 +117,24 @@
     padding: 0.3rem;
     border: 0.1rem solid var(--tertiary-color);
     border-radius: 0.3rem;
+    position: relative;
+    margin: 1rem 0;
+}
+
+.modal-form__field--invalid{
+    border: 0.1rem solid darkred;
+}
+
+.warning{
+    width: 70%;
+    text-align: start;
+    display: flex;
+    margin-bottom: 0.5rem;
+}
+
+.warning span{
+    background-color: darkred;
+    color: var(--primary-color);
+    padding: 0.6rem 0.8rem;
+    border-radius: 0.2rem;
 }
