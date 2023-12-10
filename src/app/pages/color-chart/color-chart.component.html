@@ -17,13 +17,13 @@
         <ng-template #elseBlock>
             <h4 [style.backgroundColor]="modalFormValues.preview" class="modal-form__color-preview">[ Color Preview ]</h4>
         </ng-template>
-        <input name="hexaColor" [(ngModel)]="modalFormValues.preview" class="modal-form__field" type="text" placeholder="Hexa Code">
-        <input [value]="modalFormColorCard? modalFormColorCard.code : ''" min="0" class="modal-form__field" type="number" placeholder="Color Code">
+        <input name="hexaColor" [(ngModel)]="modalFormValues.preview" class="modal-form__field" type="text" placeholder="Color value">
         <select name="colorTexture" [(ngModel)]="modalFormValues.texture" class="modal-form__field" id="">
-            <option name="empty" value="" hidden selected>Choose Texture</option>
+            <option name="empty" value="" hidden selected>Choose texture</option>
             <option name="U" value="U">Uncoated</option>
             <option name="C" value="C">Coated</option>
         </select>
+        <input [value]="modalFormColorCard? modalFormColorCard.code : ''" min="0" class="modal-form__field" type="number" placeholder="Color code">
         <input class="modal-form__button submit-button" type="submit" value="Create">
         <input (click)="resetModalFormValues()" class="modal-form__button cancel-button" type="button" value="Cancel">
     </form> 

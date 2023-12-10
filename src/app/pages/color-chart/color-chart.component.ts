@@ -11,7 +11,7 @@ import { ColorCardService } from 'src/app/services/color-card/color-card.service
 })
 export class ColorChartComponent {
   colorCards!: ColorCard[]
-  modalCardFormEnabled = true
+  modalCardFormEnabled = false
 
   modalFormColorCard!: ColorCard | null
   modalFormValues = {preview: '', texture: ''}
@@ -41,13 +41,9 @@ export class ColorChartComponent {
     this.modalCardFormEnabled = true
 
     if(card){
-      console.log("edit")
       this.modalFormColorCard = card
       this.modalFormValues.preview =  '#' + card.hexaColor
       this.modalFormValues.texture = card.type
-    }
-    else{
-      console.log("create")
     }
   }
 

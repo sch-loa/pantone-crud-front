@@ -57,9 +57,11 @@
 }
 
 .popup-options__remove{
-    background-color: var(--primary-color);
+    color: darkred;
     margin-right: 1rem;
 }
+
+.popup-options__edit{ color: darkslategrey; }
 
 .popup-options.enabled{
     display: block;
