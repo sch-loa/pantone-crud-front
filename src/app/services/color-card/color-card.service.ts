@@ -16,19 +16,19 @@ export class ColorCardService {
     return cards.map((cardJSON: ColorCardJSON) => ColorCard.fromJSON(cardJSON))
   }
 
-  create(card: string){
-    this.httpClient.post<ColorCardJSON[]>(`${REST_SERVER_URL}/pantone/createColorCard`, card, {
+  async create(card: string){
+    await lastValueFrom(this.httpClient.post<string>(`${REST_SERVER_URL}/pantone/createColorCard`, card, {
       headers: new HttpHeaders({'Content-Type' : 'application/json'})
-    }).subscribe(() => {console.log('card created', card)})
+    }))
   }
 
-  update(card: string){
-    this.httpClient.put<ColorCardJSON[]>(`${REST_SERVER_URL}/pantone/updateColorCard`, card, {
+  async update(card: string){
+    await lastValueFrom(this.httpClient.put<string>(`${REST_SERVER_URL}/pantone/updateColorCard`, card, {
       headers: new HttpHeaders({'Content-Type' : 'application/json'})
-    })
+    }))
   }
 
-  delete(card: ColorCard){
-    this.httpClient.delete(`${REST_SERVER_URL}/pantone/deleteCard?id=${card.id}`).subscribe(() => {console.log('card deleted', card)})
+  async delete(card: ColorCard){
+    await lastValueFrom(this.httpClient.delete(`${REST_SERVER_URL}/pantone/deleteCard?id=${card.id}`))
   }
 }

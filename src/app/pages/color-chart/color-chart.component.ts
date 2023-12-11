@@ -41,6 +41,11 @@ export class ColorChartComponent {
     await this.getColorCards()
   }
 
+  async updateColorCard(card: ColorCard){
+    await this.service.update(JSON.stringify(card))
+    await this.getColorCards()
+  }
+
   async getColorCards(){ this.colorCards = await this.service.get(this.currURL) }
 
   showModalCardForm(card: ColorCard | void){
@@ -59,7 +64,7 @@ export class ColorChartComponent {
     this.modalFormValues.texture = ''
   }
 
-  handleModalFormSubmit(form: NgForm){
+  async handleModalFormSubmit(form: NgForm){
     if(!form.valid || form.pristine){
       Object.keys(form.controls).forEach(controlName => {
         form.controls[controlName].markAsDirty()
@@ -73,7 +78,7 @@ export class ColorChartComponent {
         form.value.colorTexture,
         form.value.hexaColor
         )
-      this.createColorCard(card)
+      this.defaultCard? await this.updateColorCard(card) : await this.createColorCard(card)
       this.resetModalFormValues()
     }
   }
