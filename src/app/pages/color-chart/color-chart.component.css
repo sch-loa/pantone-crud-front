@@ -112,13 +112,9 @@
 
 .modal-form__field{
     font-size: 1.4rem;
-    width: 70%;
     height: 3rem;
     padding: 0.3rem;
-    border: 0.1rem solid var(--tertiary-color);
-    border-radius: 0.3rem;
     position: relative;
-    margin: 1rem 0;
 }
 
 .modal-form__field--invalid{
@@ -137,4 +133,31 @@
     color: var(--primary-color);
     padding: 0.6rem 0.8rem;
     border-radius: 0.2rem;
+}
+
+.modal-form__field, .modal-form__hexa-wrapper{
+    border: 0.1rem solid var(--tertiary-color);
+    border-radius: 0.3rem;
+    width: 70%;
+    margin: 1rem 0;
+}
+
+.modal-form__hexa-wrapper{
+    background-color: var(--tertiary-color);
+    display: flex;
+}
+
+.modal-form__hexa-wrapper input{
+    margin: 0;
+    border: 0;
+    border-radius: 0;
+    width: 100%;
+    border-left: 0.1rem solid var(--tertiary-color);
+}
+
+.modal-form__hexa-wrapper i{
+    padding: 0.3rem 0.5rem;
+    font-size: 1.3rem;
+    align-self: center;
+    color: var(--primary-color);
 }

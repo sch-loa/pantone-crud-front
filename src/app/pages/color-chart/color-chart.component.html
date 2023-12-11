@@ -13,11 +13,14 @@
 
 <div data-testid="modalForm" *ngIf="modalCardFormEnabled" class="modal-form__wrapper">
     <form (ngSubmit)="handleModalFormSubmit(modalForm)" #modalForm="ngForm" class="modal-form" action="">
-        <h4 *ngIf="modalFormValues.texture == 'C'; else elseBlock" [ngStyle]="{'background-image': 'linear-gradient(45deg, ' + modalFormValues.preview + ' 30%, rgba(255, 255, 255))'}" class="modal-form__color-preview">[ Color Preview ]</h4>
+        <h4 *ngIf="modalFormValues.texture == 'C'; else elseBlock" [ngStyle]="{'background-image': 'linear-gradient(45deg, #' + modalFormValues.preview + ' 30%, rgba(255, 255, 255))'}" class="modal-form__color-preview">[ Color Preview ]</h4>
         <ng-template #elseBlock>
-            <h4 [style.backgroundColor]="modalFormValues.preview" class="modal-form__color-preview">[ Color Preview ]</h4>
+            <h4 [style.backgroundColor]="'#'+modalFormValues.preview" class="modal-form__color-preview">[ Color Preview ]</h4>
         </ng-template>
-        <input #hexaColor="ngModel" required [(ngModel)]="modalFormValues.preview" id="hexaColor" name="hexaColor" class="modal-form__field {{hexaColor.invalid && (hexaColor.dirty && hexaColor.touched)? 'modal-form__field--invalid' : ''}}" type="text" placeholder="Color value">
+        <span class="modal-form__hexa-wrapper">
+            <i class="fa-solid fa-hashtag"></i>
+            <input #hexaColor="ngModel" required [(ngModel)]="modalFormValues.preview" id="hexaColor" name="hexaColor" class="modal-form__field {{hexaColor.invalid && (hexaColor.dirty && hexaColor.touched)? 'modal-form__field--invalid' : ''}}" type="text" placeholder="Color value">
+        </span>
         <span class="warning" *ngIf="hexaColor.invalid && (hexaColor.dirty && hexaColor.touched)"><span>Color value must be an hexa value (i.e.: #FFF)</span></span>
         <select #texture="ngModel" required [(ngModel)]="modalFormValues.texture" id="colorTexture" name="colorTexture" class="modal-form__field {{texture.invalid && (texture.dirty && texture.touched)? 'modal-form__field--invalid' : ''}}">
             <option name="" value="" hidden selected>Choose texture</option>

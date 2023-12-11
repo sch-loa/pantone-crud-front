@@ -52,7 +52,7 @@ export class ColorChartComponent {
     this.modalCardFormEnabled = true
     if(card){
       this.defaultCard = card
-      this.modalFormValues.preview = '#' + card.hexaColor
+      this.modalFormValues.preview = card.hexaColor
       this.modalFormValues.texture = card.type
     }
   }
