@@ -26,7 +26,6 @@ export class ColorChartComponent {
     this.router.events.subscribe(async event => {
       if (event instanceof NavigationEnd) {
         this.currURL = event.url.slice(1)
-        console.log('url changed:', this.currURL)
         await this.getColorCards()
       }
     })
@@ -34,6 +33,11 @@ export class ColorChartComponent {
 
   async deleteColorCard(card: ColorCard){
     this.service.delete(card)
+    await this.getColorCards()
+  }
+
+  async createColorCard(card: ColorCard){
+    this.service.create(JSON.stringify(card))
     await this.getColorCards()
   }
 
@@ -56,7 +60,6 @@ export class ColorChartComponent {
   }
 
   handleModalFormSubmit(form: NgForm){
-
     if(!form.valid || form.pristine){
       Object.keys(form.controls).forEach(controlName => {
         form.controls[controlName].markAsDirty()
@@ -70,7 +73,7 @@ export class ColorChartComponent {
         form.value.colorTexture,
         form.value.hexaColor
         )
-      console.log('aaaaaa', JSON.stringify(card))
+      this.createColorCard(card)
       this.resetModalFormValues()
     }
   }
