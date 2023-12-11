@@ -11,7 +11,7 @@ export class ColorCardService {
   constructor(private httpClient: HttpClient) {}
 
   async get(urlParams: string): Promise<ColorCard[]>{
-    const cards$ = this.httpClient.get<ColorCardJSON[]>(`${REST_SERVER_URL}/pantone/colorCards?${urlParams}`)
+    const cards$ = this.httpClient.get<ColorCardJSON[]>(`${REST_SERVER_URL}/pantone/colorCards${urlParams}`)
     const cards = await lastValueFrom(cards$)
     return cards.map((cardJSON: ColorCardJSON) => ColorCard.fromJSON(cardJSON))
   }

@@ -46,7 +46,7 @@ export class ColorChartComponent {
     await this.getColorCards()
   }
 
-  async getColorCards(){ this.colorCards = await this.service.get(this.currURL) }
+  async getColorCards(){console.log(this.currURL); this.colorCards = await this.service.get(this.currURL) }
 
   showModalCardForm(card: ColorCard | void){
     this.modalCardFormEnabled = true

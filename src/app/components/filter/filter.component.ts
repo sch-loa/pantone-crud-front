@@ -10,6 +10,7 @@ export class FilterComponent {
   range: Range = new Range()
   textureOptions: string[] = ['Uncoated', 'Coated']
   names: string[] = ['uncoated', 'coated']
+  textures: string[] = ['U', 'C']
 
   constructor(private router: Router, private route: ActivatedRoute){}
 
