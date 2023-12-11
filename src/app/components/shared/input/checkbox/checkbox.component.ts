@@ -12,5 +12,5 @@ export class CheckboxComponent implements AfterViewInit{
 
   ngAfterViewInit() { this.emitChangedEvent() }
 
-  emitChangedEvent(){ this.changedEvent.emit(this.type) }
+  emitChangedEvent(){ console.log(this.type, this.name);this.changedEvent.emit(this.type) }
 }

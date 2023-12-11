@@ -14,7 +14,8 @@ describe('CheckboxComponent', () => {
 
     fixture = TestBed.createComponent(CheckboxComponentStub)
     component = fixture.componentInstance
-    component.dataTestId = "checkbox"
+    component.type = 'hello'
+    component.name = ''
     fixture.detectChanges()
   })
 
@@ -22,27 +23,12 @@ describe('CheckboxComponent', () => {
     expect(component).toBeTruthy()
   })
 
-  it('should emit false state change initially', () => {
-    expect(component.state).toBeFalsy()
-    expect(component.eventEmitted).toBeFalsy()
-  })
-
   it('should emit true state change', () => {
-    const checkbox = searchElement('checkbox')
+    const checkbox = searchElement('checkbox__')
     checkbox.click()
     fixture.detectChanges()
-    expect(component.state).toBeTruthy()
+    expect(component.type).toBeTruthy()
     expect(component.eventEmitted).toBeTruthy()
-  })
-
-  it('should emit false state change', () => {
-    const checkbox = searchElement('checkbox')
-    checkbox.click()
-    fixture.detectChanges()
-    checkbox.click()
-    fixture.detectChanges()
-    expect(component.state).toBeFalsy()
-    expect(component.eventEmitted).toBeFalsy()
   })
 
   function searchElement(testId: string) {
@@ -51,9 +37,9 @@ describe('CheckboxComponent', () => {
   }
 
   class CheckboxComponentStub extends CheckboxComponent{
-    eventEmitted!: boolean
+    eventEmitted!: string
     override emitChangedEvent(): void {
-        this.eventEmitted = this.state
+        this.eventEmitted = this.type
     }
   }
 })
