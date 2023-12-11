@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core'
 import { ColorCard, ColorCardJSON } from 'src/domain/ColorCard'
 import { HttpClient, HttpHeaders } from '@angular/common/http'
-import { REST_SERVER_URL } from '../config'
+import { REST_SERVER_URL } from '../../configuration/config'
 import { lastValueFrom } from 'rxjs'
 
 @Injectable({
@@ -42,9 +42,11 @@ export class ColorCardService {
     
   }
 
-  async get(urlParams: string){
+  async get(urlParams: string): Promise<ColorCard[]>{
     const cards$ = this.httpClient.get<ColorCardJSON[]>(`${REST_SERVER_URL}/colorCards?${urlParams}`)
-    return (await lastValueFrom(cards$)).map((cardJSON: ColorCardJSON) => ColorCard.fromJSON(cardJSON))
+    const cards = await lastValueFrom(cards$)
+    console.log(cards)
+    return cards.map((cardJSON: ColorCardJSON) => ColorCard.fromJSON(cardJSON))
   }
 
   create(card: string){

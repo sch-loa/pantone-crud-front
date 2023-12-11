@@ -22,15 +22,15 @@ export class ColorChartComponent {
     private route: ActivatedRoute
   ){}
 
-  ngOnInit(): void {
-    this.router.events.subscribe(event => {
+  ngOnInit() {
+    this.router.events.subscribe(async event => {
       if (event instanceof NavigationEnd) {
         console.log('url changed:', event.url.slice(1))
-        //this.colorCards = await this.service.get(event.url.slice(1))
+        this.colorCards = await this.service.get(event.url.slice(1))
       }
     })
 
-    this.colorCards = this.service.colorCards
+    //this.colorCards = this.service.colorCards
   }
 
   deleteColorCard(card: ColorCard){
