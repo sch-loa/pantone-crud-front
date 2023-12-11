@@ -11,7 +11,7 @@ import { NgForm } from '@angular/forms'
 })
 export class ColorChartComponent {
   colorCards!: ColorCard[]
-
+  currURL!: string
   modalCardFormEnabled = false
   defaultCard!: ColorCard | null
   modalFormValues = {preview: '', texture: ''}
@@ -25,17 +25,19 @@ export class ColorChartComponent {
   ngOnInit() {
     this.router.events.subscribe(async event => {
       if (event instanceof NavigationEnd) {
-        console.log('url changed:', event.url.slice(1))
-        this.colorCards = await this.service.get(event.url.slice(1))
+        this.currURL = event.url.slice(1)
+        console.log('url changed:', this.currURL)
+        await this.getColorCards()
       }
     })
-
-    //this.colorCards = this.service.colorCards
   }
 
-  deleteColorCard(card: ColorCard){
+  async deleteColorCard(card: ColorCard){
     this.service.delete(card)
+    await this.getColorCards()
   }
+
+  async getColorCards(){ this.colorCards = await this.service.get(this.currURL) }
 
   showModalCardForm(card: ColorCard | void){
     this.modalCardFormEnabled = true

@@ -11,7 +11,7 @@ export class ColorCardService {
   constructor(private httpClient: HttpClient) {}
 
   async get(urlParams: string): Promise<ColorCard[]>{
-    const cards$ = this.httpClient.get<ColorCardJSON[]>(`${REST_SERVER_URL}/colorCards?${urlParams}`)
+    const cards$ = this.httpClient.get<ColorCardJSON[]>(`${REST_SERVER_URL}/pantone/colorCards?${urlParams}`)
     const cards = await lastValueFrom(cards$)
     console.log(cards)
     return cards.map((cardJSON: ColorCardJSON) => ColorCard.fromJSON(cardJSON))
@@ -24,12 +24,13 @@ export class ColorCardService {
   }
 
   update(card: string){
-    this.httpClient.put<ColorCardJSON[]>(`${REST_SERVER_URL}/colorCards/create`, card, {
+    this.httpClient.put<ColorCardJSON[]>(`${REST_SERVER_URL}/colorCards/update`, card, {
       headers: new HttpHeaders({'Content-Type' : 'application/json'})
     })
   }
 
   delete(card: ColorCard){
-    this.httpClient.delete<ColorCardJSON[]>(`${REST_SERVER_URL}/colorCards/remove?${card}`)
+    this.httpClient.delete(`${REST_SERVER_URL}/pantone/deleteCard?id=${card.id}`, {}).subscribe(() => {console.log('card deleted', card)})
+    
   }
 }

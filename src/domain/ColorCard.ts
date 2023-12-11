@@ -9,7 +9,7 @@ export class ColorCard{
         return new ColorCard(
             cardJSON.id,
             cardJSON.code,
-            cardJSON.texture,
+            cardJSON.type,
             cardJSON.hexaColor
             )
     }
@@ -18,6 +18,6 @@ export class ColorCard{
 export type ColorCardJSON = {
     id: number,
     code: number,
-    texture: string,
+    type: string,
     hexaColor: string
 }
