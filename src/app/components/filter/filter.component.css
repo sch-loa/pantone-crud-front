@@ -69,6 +69,11 @@
     overflow: hidden;
 }
 
+.hexa-wrapper--invalid{
+    border: 0.1rem solid darkred;
+    background-color: darkred;
+}
+
 .hexa-wrapper i {
     color: var(--primary-color);
     padding: 0.3rem 0.5rem;

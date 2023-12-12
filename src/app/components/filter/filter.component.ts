@@ -1,4 +1,5 @@
 import { Component } from '@angular/core'
+import { FormControl } from '@angular/forms'
 import { Router, ActivatedRoute } from '@angular/router'
 
 @Component({
@@ -11,6 +12,8 @@ export class FilterComponent {
   textureOptions: string[] = ['Uncoated', 'Coated']
   names: string[] = ['uncoated', 'coated']
   textures: string[] = ['U', 'C']
+  hexaMin: FormControl = new FormControl('')
+  hexaMax: FormControl = new FormControl('')
 
   constructor(private router: Router, private route: ActivatedRoute){}
 
@@ -27,8 +30,15 @@ export class FilterComponent {
     }) 
   }
 
-  validateRange(){
-    this.range.validate()
+  validateRange(control: FormControl, name: string){
+    const newValue = parseInt(control.value, 16)
+    if(isNaN(newValue) || newValue.toString(16) !== control.value.toLowerCase()){
+      control.setErrors({ 'invalidHex': true })
+    }
+    else{
+      this.range.validate()
+      this.updateURL(name, control.value)
+    }
   }
 }
 

@@ -4,16 +4,16 @@
         <div class="filter__range">
             <div class="filter_item">
                 <label class="filter__label" for="">From</label>
-                <span class="hexa-wrapper">
+                <span class="hexa-wrapper {{hexaMin.invalid && (hexaMin.dirty || hexaMin.touched)? 'hexa-wrapper--invalid' : ''}}">
                     <i class="fa-solid fa-hashtag"></i>
-                    <input data-testid="minValue" name="minValue" [(ngModel)]="range.min" (keyup.enter)="validateRange(); updateURL('min_color', range.min)" data-testid="minValue" class="filter__input" type="text" placeholder="">
+                    <input [formControl]="hexaMin" data-testid="minValue" name="minValue" [(ngModel)]="range.min" (keyup.enter)="validateRange(hexaMin, 'min_color')" data-testid="minValue" class="filter__input" type="text" placeholder="">
                 </span>
             </div>
             <div class="filter_item">
                 <label class="filter__label" for="">To</label>
-                <span class="hexa-wrapper">
+                <span class="hexa-wrapper {{hexaMax.invalid && (hexaMax.dirty || hexaMax.touched)? 'hexa-wrapper--invalid' : ''}}">
                     <i class="fa-solid fa-hashtag"></i>
-                    <input data-testid="maxValue" name="maxValue" [(ngModel)]="range.max" (keyup.enter)="validateRange(); updateURL('max_color', range.max)" data-testid="maxValue" class="filter__input" type="text" placeholder="">
+                    <input [formControl]="hexaMax" data-testid="maxValue" name="maxValue" [(ngModel)]="range.max" (keyup.enter)="validateRange(hexaMax, 'max_color')" data-testid="maxValue" class="filter__input" type="text" placeholder="">
                 </span>
             </div>
         </div>
