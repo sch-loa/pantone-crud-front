@@ -25,18 +25,18 @@
         </ng-template>
         <span class="modal-form__hexa-wrapper {{hexaColor.invalid && (hexaColor.dirty && hexaColor.touched)? 'invalid-hexa' : ''}}">
             <i class="fa-solid fa-hashtag"></i>
-            <input #hexaColor="ngModel" required [(ngModel)]="modalFormValues.preview" (ngModelChange)="validateHexa(modalForm, 'hexaColor', $event)" id="hexaColor" name="hexaColor" class="modal-form__field {{hexaColor.invalid && (hexaColor.dirty && hexaColor.touched)? 'modal-form__field--invalid' : ''}}" type="text" placeholder="Color value">
+            <input data-testid="form_hexaColor" #hexaColor="ngModel" required [(ngModel)]="modalFormValues.preview" (ngModelChange)="validateHexa(modalForm, 'hexaColor', $event)" id="hexaColor" name="hexaColor" class="modal-form__field {{hexaColor.invalid && (hexaColor.dirty && hexaColor.touched)? 'modal-form__field--invalid' : ''}}" type="text" placeholder="Color value">
         </span>
         <span class="warning" *ngIf="hexaColor.invalid && (hexaColor.dirty && hexaColor.touched)"><span>Color value must be an hexa value (i.e.: #FFF)</span></span>
-        <select #texture="ngModel" required [(ngModel)]="modalFormValues.texture" id="colorTexture" name="colorTexture" class="modal-form__field {{texture.invalid && (texture.dirty && texture.touched)? 'modal-form__field--invalid' : ''}}">
+        <select data-testid="form_texture" #texture="ngModel" required [(ngModel)]="modalFormValues.texture" id="colorTexture" name="colorTexture" class="modal-form__field {{texture.invalid && (texture.dirty && texture.touched)? 'modal-form__field--invalid' : ''}}">
             <option name="" value="" hidden selected>Choose texture</option>
             <option name="U" value="U">Uncoated</option>
             <option name="C" value="C">Coated</option>
         </select>
         <span class="warning" *ngIf="texture.invalid && (texture.dirty && texture.touched)"><span>Texture must not be empty. Select an option</span></span>
-        <input #colorCode="ngModel" required [ngModel]="defaultCard?.code" id="colorCode" name="colorCode" min="0" class="modal-form__field {{colorCode.invalid && (colorCode.dirty && colorCode.touched)? 'modal-form__field--invalid' : ''}}" type="number" placeholder="Color code">
+        <input data-testid="form_colorCode" #colorCode="ngModel" required [ngModel]="defaultCard?.code" id="colorCode" name="colorCode" min="0" class="modal-form__field {{colorCode.invalid && (colorCode.dirty && colorCode.touched)? 'modal-form__field--invalid' : ''}}" type="number" placeholder="Color code">
         <span class="warning" *ngIf="colorCode.invalid && (colorCode.dirty && colorCode.touched)"><span>Color code must be a number</span></span>
-        <input class="modal-form__button submit-button" type="submit" [value]="defaultCard? 'Update' : 'Create'">
+        <input data-testid="form_submit" class="modal-form__button submit-button" type="submit" [value]="defaultCard? 'Update' : 'Create'">
         <input (click)="resetModalFormValues()" class="modal-form__button cancel-button" type="button" value="Cancel">
     </form> 
 </div>

@@ -1,4 +1,4 @@
-<article class="color-card">
+<article [attr.data-testid]="'color-card__'+colorCard.code" class="color-card">
     <div *ngIf="colorCard.type == 'U'" class="color-card__color-box" [ngStyle]="{'background-color': '#' + colorCard.hexaColor}">
     </div>
     <div *ngIf="colorCard.type == 'C'" class="color-card__color-box" [ngStyle]="{'background-image': 'linear-gradient(45deg, #' + colorCard.hexaColor + ' 30%, rgba(255, 255, 255))'}">
