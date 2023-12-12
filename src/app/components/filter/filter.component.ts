@@ -15,7 +15,6 @@ export class FilterComponent {
   constructor(private router: Router, private route: ActivatedRoute){}
 
   updateURL(param: string, value: string | boolean){
-    this.validateRange()
     const currentParams = { ...this.route.snapshot.queryParams }
 
     if(value){ currentParams[param] = value     

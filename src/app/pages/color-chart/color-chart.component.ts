@@ -2,7 +2,7 @@ import { Component } from '@angular/core'
 import { Router, NavigationEnd, ActivatedRoute } from '@angular/router'
 import { ColorCard } from 'src/domain/ColorCard'
 import { ColorCardService } from 'src/app/services/color-card/color-card.service'
-import { NgForm, NgModel } from '@angular/forms'
+import { NgForm } from '@angular/forms'
 
 @Component({
   selector: 'app-color-chart',
