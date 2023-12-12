@@ -32,12 +32,12 @@ export class ColorChartComponent {
   }
 
   async deleteColorCard(card: ColorCard){
-    this.service.delete(card)
+    await this.service.delete(card)
     await this.getColorCards()
   }
 
   async createColorCard(card: ColorCard){
-    this.service.create(JSON.stringify(card))
+    await this.service.create(JSON.stringify(card))
     await this.getColorCards()
   }
 
