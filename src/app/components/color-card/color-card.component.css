@@ -45,11 +45,13 @@
     width: fit-content;
     position: absolute;
     top: 2rem;
-    right: -1rem;
+    right: -1.5rem;
     border: 0.1rem solid var(--shadow-color);
-    padding: 0.4rem;
+    padding: 0.6rem;
     z-index: 999;
 }
+
+.popup-options i{ font-size: 1.3rem;}
 
 .popup-options, .popup-options * {
     background-color: var(--primary-color);
@@ -58,7 +60,7 @@
 
 .popup-options__remove{
     color: darkred;
-    margin-right: 1rem;
+    margin-right: 1.5rem;
 }
 
 .popup-options__edit{ color: darkslategrey; }
