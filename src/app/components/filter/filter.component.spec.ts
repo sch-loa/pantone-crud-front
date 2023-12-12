@@ -31,7 +31,7 @@ describe('FilterComponent', () => {
     writeInput(minValue, value)
 
     expect(minValue.value).toBe(value)
-    expect(component.range.min).toBe(+value)
+    expect(component.range.min).toBe(value)
   })
 
   it('should update max value', () => {
@@ -40,7 +40,7 @@ describe('FilterComponent', () => {
     writeInput(maxValue, value)
 
     expect(maxValue.value).toBe(value)
-    expect(component.range.max).toBe(+value)
+    expect(component.range.max).toBe(value)
   })
 
   it('should exchange range values', () => {
@@ -55,8 +55,8 @@ describe('FilterComponent', () => {
     writeInput(maxValue, minNum)
     maxValue.dispatchEvent(event)
 
-    expect(component.range.min).toBe(+minNum)
-    expect(component.range.max).toBe(+maxNum)
+    expect(component.range.min).toBe(minNum)
+    expect(component.range.max).toBe(maxNum)
   })
 
   it('should update url min color value', () => {

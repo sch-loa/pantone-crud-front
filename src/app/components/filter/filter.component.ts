@@ -14,7 +14,7 @@ export class FilterComponent {
 
   constructor(private router: Router, private route: ActivatedRoute){}
 
-  updateURL(param: string, value: string | number | boolean){
+  updateURL(param: string, value: string | boolean){
     this.validateRange()
     const currentParams = { ...this.route.snapshot.queryParams }
 
@@ -34,8 +34,8 @@ export class FilterComponent {
 }
 
 class Range{
-  min!: number
-  max!: number
+  min!: string
+  max!: string
   
   validate(){
     if(this.notNull() && !this.isValid()){
@@ -45,6 +45,6 @@ class Range{
     }
   }
 
-  isValid(){ return this.min < this.max }
+  isValid(){ return parseInt(this.min, 16)  < parseInt(this.max, 16) }
   notNull(){ return this.min && this.max }
 }
