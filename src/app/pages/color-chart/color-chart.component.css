@@ -8,7 +8,7 @@
 .cards-wrapper{
     display: flex;
     flex-direction: column;
-    min-height: calc(100vh - 9rem);
+    min-height: calc(100vh - 14rem);
     justify-content: space-between;
 }
 
@@ -51,6 +51,10 @@
     .filter-wrapper{ order: 0; }
 
     .color-cards__cards-container{ margin-top: 2rem; min-width: calc(100vw - 30rem); }
+
+    .no-elements__msg{
+        margin-top: 5rem;
+    }
 }
 
 /*MODAL FORM*/
@@ -166,3 +170,34 @@
 .invalid-hexa{
     background-color: darkred !important;
 }
+
+.no-elements__msg{
+    width: 25rem;
+    text-align: center;
+    padding: 1rem;
+    border: 0.1rem solid var(--tertiary-color);
+    outline: 0.1rem solid var(--tertiary-color);
+    outline-offset: 0.3rem;
+    border-radius: 0.5rem;
+    color: var(--tertiary-color);
+    opacity: 0.8;
+}
+
+@media only screen and (min-width : 838px) {
+    .no-elements__wrapper{
+        margin-bottom: 0;
+        width: calc(100vw - 37rem);
+        justify-content: center;
+        margin-top: 15rem;
+    }
+}
+
+.no-elements__wrapper{
+    height: calc(100vh - 23rem);
+}
+
+.no-elements__wrapper .cards-wrapper{
+    min-height: calc(100vh - 37rem);
+}
+
+.no-elements__msg p { font-size: 1.5rem; font-weight: 800;}

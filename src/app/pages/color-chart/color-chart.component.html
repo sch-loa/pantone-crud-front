@@ -1,10 +1,16 @@
 <app-search-bar></app-search-bar>
-<main class="color-cards">
+<main class="color-cards {{colorCards? (colorCards.length != 0 ? '' : 'no-elements__wrapper') : 'no-elements__wrapper'}}">
     <app-filter class="filter-wrapper"></app-filter>
     <section class="cards-wrapper">
-        <section class="color-cards__cards-container">
+        <section *ngIf="colorCards? colorCards.length != 0 : false; else noElements" class="color-cards__cards-container">
             <app-color-card (deleteEvent)="deleteColorCard($event)" (editEvent)="showModalCardForm($event)" class="color-card-wrapper" *ngFor="let colorCard of colorCards" [colorCard]="colorCard"></app-color-card>
         </section>
+        <ng-template #noElements>
+            <span class="no-elements__msg">
+                <p>There are no colors to display.</p>
+                <p>Try adding new ones!</p>
+            </span>
+        </ng-template>
     </section>
     <button data-testid="add-button" (click)="showModalCardForm()" class="button-add">
         <i class="fa-solid fa-plus"></i>
