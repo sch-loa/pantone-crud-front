@@ -161,3 +161,7 @@
     align-self: center;
     color: var(--primary-color);
 }
+
+.invalid-hexa{
+    background-color: darkred !important;
+}

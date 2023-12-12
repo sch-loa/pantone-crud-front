@@ -2,7 +2,7 @@ import { Component } from '@angular/core'
 import { Router, NavigationEnd, ActivatedRoute } from '@angular/router'
 import { ColorCard } from 'src/domain/ColorCard'
 import { ColorCardService } from 'src/app/services/color-card/color-card.service'
-import { NgForm } from '@angular/forms'
+import { NgForm, NgModel } from '@angular/forms'
 
 @Component({
   selector: 'app-color-chart',
@@ -80,6 +80,14 @@ export class ColorChartComponent {
         )
       this.defaultCard? await this.updateColorCard(card) : await this.createColorCard(card)
       this.resetModalFormValues()
+    }
+  }
+
+  validateHexa(form: NgForm, field: string,value: string){
+    const newValue = parseInt(value, 16)
+    if(isNaN(newValue) || newValue.toString(16) !== value.toLowerCase()){
+      const formField = form.form.get(field)
+      formField?.setErrors({ 'invalidHex': true })
     }
   }
 }
