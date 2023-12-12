@@ -18,6 +18,7 @@ export class FilterComponent {
   constructor(private router: Router, private route: ActivatedRoute){}
 
   updateURL(param: string, value: string | boolean){
+    this.range.validate()
     const currentParams = { ...this.route.snapshot.queryParams }
 
     if(value){ currentParams[param] = value     
@@ -30,14 +31,15 @@ export class FilterComponent {
     }) 
   }
 
-  validateRange(control: FormControl, name: string){
+  validateRange(control: FormControl, name: string = ''){
     const newValue = parseInt(control.value, 16)
     if(isNaN(newValue) || newValue.toString(16) !== control.value.toLowerCase()){
       control.setErrors({ 'invalidHex': true })
     }
     else{
-      this.range.validate()
-      this.updateURL(name, control.value)
+      if(name != ''){
+        this.updateURL(name, control.value)
+      }
     }
   }
 }

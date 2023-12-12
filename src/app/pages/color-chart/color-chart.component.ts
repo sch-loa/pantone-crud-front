@@ -88,6 +88,8 @@ export class ColorChartComponent {
     if(isNaN(newValue) || newValue.toString(16) !== value.toLowerCase()){
       const formField = form.form.get(field)
       formField?.setErrors({ 'invalidHex': true })
+      formField?.markAsTouched()
+      formField?.markAsDirty()
     }
   }
 }

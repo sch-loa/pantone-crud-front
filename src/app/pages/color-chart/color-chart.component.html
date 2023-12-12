@@ -25,7 +25,7 @@
         </ng-template>
         <span class="modal-form__hexa-wrapper {{hexaColor.invalid && (hexaColor.dirty && hexaColor.touched)? 'invalid-hexa' : ''}}">
             <i class="fa-solid fa-hashtag"></i>
-            <input data-testid="form_hexaColor" #hexaColor="ngModel" required [(ngModel)]="modalFormValues.preview" (ngModelChange)="validateHexa(modalForm, 'hexaColor', $event)" id="hexaColor" name="hexaColor" class="modal-form__field {{hexaColor.invalid && (hexaColor.dirty && hexaColor.touched)? 'modal-form__field--invalid' : ''}}" type="text" placeholder="Color value">
+            <input data-testid="form_hexaColor" #hexaColor="ngModel" required [(ngModel)]="modalFormValues.preview" (ngModelChange)="validateHexa(modalForm, 'form_hexaColor', $event)" id="hexaColor" name="form_hexaColor" class="modal-form__field {{hexaColor.invalid && (hexaColor.dirty && hexaColor.touched)? 'modal-form__field--invalid' : ''}}" type="text" placeholder="Color value">
         </span>
         <span class="warning" *ngIf="hexaColor.invalid && (hexaColor.dirty && hexaColor.touched)"><span>Color value must be an hexa value (i.e.: #FFF)</span></span>
         <select data-testid="form_texture" #texture="ngModel" required [(ngModel)]="modalFormValues.texture" id="colorTexture" name="colorTexture" class="modal-form__field {{texture.invalid && (texture.dirty && texture.touched)? 'modal-form__field--invalid' : ''}}">
